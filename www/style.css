@@ -1,8 +1,11 @@
+
 body {
     background-color: black;
     overflow: hidden;
-    /* combines both axes */
 }
+
+
+
 
 /* container square */
 .square {
@@ -158,11 +161,11 @@ body {
 
 .receiver_message {
     padding: 8px;
-    border: 2px solid cyan;
+    border: 2px solid #0045ff;;
     border-radius: 0px 15px 15px 20px;
     width: auto;
     color: white;
-    background-color: #0dcaf014;
+    background-color: #0045ff;;
 }
 
 .sender_message {
@@ -175,7 +178,7 @@ body {
 }
 
 .width-size {
-    max-width: 80%;
+    max_width: 80%;
     width: auto;
 }
 
@@ -394,3 +397,53 @@ svg {
 }
 
 /* Table Scroll Property */
+
+
+
+.chat-msg {
+    background: rgba(255,255,255,0.1);
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+}
+
+.chat-bubble {
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 10px;
+    font-size: 14px;
+    width: fit-content;
+    max-width: 80%;
+    color: white;
+}
+
+.chat-bubble.system {
+    background: #444;
+}
+
+.chat-bubble.user {
+    background: #0066cc;
+    margin-left: auto;
+}
+
+.chat-bubble.assistant {
+    background: #009966;
+}
+* {
+    color: white;
+}
+#siri-container {
+    width: 300px;
+    height: 120px;
+    position: relative;
+    z-index: 5;
+}
+
+
+
+
+
+
+

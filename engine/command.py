@@ -2,14 +2,17 @@
 import pyttsx3
 import speech_recognition as sr
 import eel
+import time
+
 
 def speak(text):
     engine = pyttsx3.init('sapi5')
     voices = engine.getProperty('voices')
-    
     engine.setProperty('voice', voices[0].id)
     engine.setProperty('rate',174)
+    eel.DisplayMessage(text)
     engine.say(text)
+    eel.receiverText(text)
     engine.runAndWait()
 
 
@@ -30,23 +33,57 @@ def takecommand():
         query = r.recognize_google(audio, language='en-in')    
         print(f"user said: {query}")
         eel.DisplayMessage(query)
-        
-        eel.Show()
+        time.sleep(2)
+         
+        return query
     except Exception as e:
+        print("Error", e)
         return ""
 
     return query.lower()
 
 #text = takecommand()
 #speak(text)
+
 @eel.expose
-def allCommands():
+def allCommands(message=1):
 
-    query = takecommand()
-    print(query)
-
-    if "open" in query:
-        from engine.features import openCommand
-        openCommand(query)
+    if message ==1:
+        query = takecommand()
+        print(query)
+        eel.senderText(query)
     else:
-        print("not run")
+        query = message
+        eel.senderText(query)
+
+    try:
+        
+
+        if query and "open" in query:
+            from engine.features import openCommand
+            openCommand(query)
+        elif "on youtube" in query:
+            from engine.features import PlayYoutube
+            PlayYoutube(query)    
+        elif not query:
+            speak("I didn’t catch that properly.")
+        else:
+            from engine.features import geminiai
+            geminiai(query)
+
+    
+    except:
+        print("error")
+
+import eel
+
+def ui(text):
+    try:
+        eel.showOnUI(text)
+    except:
+        pass
+
+import eel
+eel.init("www")
+
+eel.ShowHood()       

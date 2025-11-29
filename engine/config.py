@@ -1,1 +1,2 @@
 ASSISTANT_NAME = "joey"
+LLM_KEY = "AIzaSyDe2m-9UJnofqkkQ4OenEN4L_HRgzb0LhA"
